@@ -8,11 +8,15 @@ const bookingSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    required: false,
+    required: true,
   },
   phoneNo: {
     type: String,
-    required: false,
+    required: true,
+  },
+  emailAddres: {
+    type: String,
+    required: true,
   },
   createdAt: {
     type: Date,
@@ -21,11 +25,11 @@ const bookingSchema = new mongoose.Schema({
   },
   takenTime: {
     type: Date,
-    // required:true
+    required: true,
   },
   returnTime: {
     type: Date,
-    // required:true
+    required: true,
   },
   booking_id: {
     type: Number,
@@ -35,7 +39,7 @@ const bookingSchema = new mongoose.Schema({
   staus: {
     type: String,
     enum: ["booked", "pending", "in-active"],
-    required: false,
+    required: true,
     default: "pending",
   },
   specialInstructions: {
@@ -43,7 +47,7 @@ const bookingSchema = new mongoose.Schema({
   },
   car: {
     type: mongoose.Schema.Types.ObjectId,
-    required: false,
+    required: frue,
     ref: "products",
   },
 });
