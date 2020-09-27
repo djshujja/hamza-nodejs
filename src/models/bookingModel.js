@@ -14,7 +14,7 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  emailAddres: {
+  emailAddress: {
     type: String,
     required: true,
   },
@@ -24,11 +24,11 @@ const bookingSchema = new mongoose.Schema({
     default: Date.now,
   },
   takenTime: {
-    type: Date,
+    type: String,
     required: true,
   },
   returnTime: {
-    type: Date,
+    type: String,
     required: true,
   },
   booking_id: {
