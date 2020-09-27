@@ -8,11 +8,11 @@ const bookingSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
   },
   phoneNo: {
     type: String,
-    required: true,
+    required: false,
   },
   createdAt: {
     type: Date,
