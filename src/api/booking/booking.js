@@ -30,8 +30,9 @@ router.post("/new", async (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     phoneNo: req.body.phoneNo,
-    booking_from: req.body.booking_from,
-    booking_to: req.body.booking_to,
+    emailAddress: req.body.emailAddress,
+    takenTime: req.body.takenTime,
+    returnTime: req.body.returnTime,
     booking_id: newId,
     car: req.body.car,
   });
