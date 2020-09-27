@@ -35,7 +35,7 @@ const bookingSchema = new mongoose.Schema({
   staus: {
     type: String,
     enum: ["booked", "pending", "in-active"],
-    required: true,
+    required: false,
     default: "pending",
   },
   specialInstructions: {
@@ -43,7 +43,7 @@ const bookingSchema = new mongoose.Schema({
   },
   car: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    required: false,
     ref: "products",
   },
 });
