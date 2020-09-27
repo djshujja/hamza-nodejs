@@ -6,7 +6,8 @@ const Booking = require("../../models/bookingModel");
 
 router.get("/", async (req, res) => {
   try {
-    const bookings = await Booking.find({}).select("-__v");
+    const bookings = await Booking.find({}).populate("car", "_id name").exec();
+
     res.send(bookings);
   } catch (error) {
     res.status(400).send(error);
@@ -48,7 +49,9 @@ router.get("/:bookID", async (req, res) => {
   const id = req.params.bookID;
   const booking = await Booking.find({
     booking_id: id,
-  });
+  })
+    .populate("car")
+    .exec();
 
   try {
     if (booking == "" || null) {
