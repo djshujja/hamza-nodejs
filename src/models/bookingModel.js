@@ -19,9 +19,10 @@ const bookingSchema = new mongoose.Schema({
     required: true,
   },
   createdAt: {
-    type: Date,
+    type: String,
     required: true,
-    default: Date.now,
+    // default: Date.now.toISOString(),
+    // default: Date.now
   },
   takenTime: {
     type: String,
@@ -36,7 +37,7 @@ const bookingSchema = new mongoose.Schema({
     required: true,
     default: 1,
   },
-  staus: {
+  status: {
     type: String,
     enum: ["booked", "pending", "in-active"],
     required: true,

@@ -16,8 +16,14 @@ const UpdateProducts = (id,value,imagePath,mutlipleImagePath)=>{
         model:value.model,
 
 
-       rental_period:value.rental_period,
-       rental_cost:value.rental_cost,
+        daily_cost: value.daily_cost,
+        weekly_cost: value.weekly_cost,
+        monthly_cost: value.monthly_cost,
+
+
+        daily_rental_cost: value.daily_rental_cost,
+        weekly_rental_cost: value.weekly_rental_cost,
+        monthly_rental_cost: value.monthly_rental_cost,
        mileage_limit:value.mileage_limit,
        color_available:value.color_available,
        additional_mileage:value.additional_mileage,

@@ -32,13 +32,31 @@ const AddProductsSchemas = new MongooseSchema({
         default: Date.now 
     },
     // rental period
-    rental_period:{
+    // rental_period:{
+    //   type:String,
+    // },
+
+
+    daily_cost:{
       type:String,
     },
-    rental_cost:{
-      type:String,
+
+    weekly_cost:{
+        type:String,
+      },
+
+    monthly_cost:{
+        type:String,
+      },
+
+
+    daily_mileage_limit:{
+        type:String,
     },
-    mileage_limit:{
+    weekly_mileage_limit:{
+        type:String,
+    },
+    monthly_mileage_limit:{
         type:String,
     },
     color_available:{
@@ -82,6 +100,11 @@ const AddProductsSchemas = new MongooseSchema({
     multiple_image_path:{
         type:String,
     },
+    showroom: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: "Showroom",
+      },
 
 
 

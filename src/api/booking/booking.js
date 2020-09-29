@@ -76,7 +76,7 @@ router.put("/:bookID", async (req, res) => {
   }
 
   try {
-    booking.isPending = req.body.isPending;
+    booking.status = req.body.status;
     booking.save();
     res.send(booking);
   } catch (error) {
