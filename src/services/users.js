@@ -75,10 +75,11 @@ const editUser = (id, body) => {
             _id:id
         }, {
             full_name: body.full_name,            
-            emai: body.email,
+            email: body.email,
             contact_no: body.contact_no,
             car_rental_company_name: body.car_rental_company_name,
-            country: body.country
+            country: body.country,
+            city: body.city
         }).then(() => {
             resolve("User Details have been updated!")
         }).catch(err => {
