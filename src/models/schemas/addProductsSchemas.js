@@ -109,8 +109,8 @@ const AddProductsSchemas = new MongooseSchema({
   },
   status: {
     type: String,
-    enum: ["active", "pause"],
-    default: "active",
+    enum: ["Active", "Paused"],
+    default: "Active",
   },
 });
 
