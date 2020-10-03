@@ -88,10 +88,21 @@ const editUser = (id, body) => {
     })
 }
 
+const getUser = (id) => {
+    return new Promise((resolve, reject) => {
+        userModel.findOne({
+            _id:id
+        }).then(data => {
+            resolve(data)
+        }).catch(err => reject(err))
+    })
+}
+
 module.exports = {
     allUsers,
     makeAdmin,
     makeManager,
     deleteUser,
-    editUser
+    editUser,
+    getUser
 }

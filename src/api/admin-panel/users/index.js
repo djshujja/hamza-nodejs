@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {allUsers,makeAdmin,makeManager,deleteUser,editUser} = require("../../../services/users");
+const {allUsers,makeAdmin,makeManager,deleteUser,editUser,getUser} = require("../../../services/users");
 
 router.get("/",async (req,res,next)=>{
     allUsers().then(data=>{
@@ -43,14 +43,17 @@ router.get("/delete/:id",async (req,res,next)=>{
 
 router.post("/edit-user/:id", async (req, res , next) => {
     
-    try {
         editUser(req.params.id,req.body).then(() => {
             res.send("User details have been edited");
         }).catch(err => {
             next(err);
         })
-    } catch (error) {
-        next(error)
-    }
+    
+})
+
+router.get("/get-user/:id", async (req, res, next) => {
+    
+        getUser(req.params.id).then((data) => res.send(data)).catch(err => next(err))
+    
 })
 module.exports = router;
