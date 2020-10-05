@@ -13,10 +13,16 @@ const showroomSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  callTracking: {
+  // callTracking: {
+  //   type: String,
+  //   enum: ["Enabled", "Disabled"],
+  //   default: "Disabled",
+  // },
+  status: {
     type: String,
-    enum: ["Enabled", "Disabled"],
-    default: "Disabled",
+    enum: ["Active", "Paused"],
+    default: "Active",
+    required: true,
   },
   createdAt: {
     type: Date,

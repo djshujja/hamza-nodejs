@@ -16,7 +16,6 @@ router.post("/new", async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     address: req.body.address,
-    carTracking: req.body.carTracking,
   });
   try {
     await newShowroom.save();
@@ -30,6 +29,49 @@ router.post("/new", async (req, res) => {
   } catch (e) {}
 });
 
+router.post("/updateShowroom/:id", async (req, res) => {
+  const showroom = await Showroom.findOne({ _id: req.params.id });
+  const { name, email, address } = req.body;
+  if (showroom == "" || null) {
+    return res.send("Showroom not found!");
+  }
+  try {
+    showroom.name = name;
+    showroom.email = email;
+    showroom.address = address;
+    // showroom.callTracking = callTracking;
+
+    await showroom.save();
+
+    res.send({
+      data: showroom,
+      message: "Data has been updated!",
+    });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+router.post("/edit-status/:id", async (req, res) => {
+  const showroom = await Showroom.findOne({ _id: req.params.id });
+  const { status } = req.body;
+  if (showroom == "" || showroom == null) {
+    return res.send("Showroom not found!");
+  }
+  try {
+    showroom.status = status;
+
+    await showroom.save();
+
+    res.send({
+      data: showroom,
+      message: "Data has been updated!",
+    });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
@@ -39,29 +81,6 @@ router.get("/:id", async (req, res) => {
     }
 
     res.send(showroom);
-  } catch (e) {
-    res.status(400).send(e);
-  }
-});
-
-router.put("/:id", async (req, res) => {
-  const showroom = await Showroom.findOne({ _id: req.params.id });
-  const { name, email, address, callTracking } = req.body;
-  if (showroom == "" || null) {
-    return res.send("Showroom not found!");
-  }
-  try {
-    showroom.name = name;
-    showroom.email = email;
-    showroom.address = address;
-    showroom.callTracking = callTracking;
-
-    await showroom.save();
-
-    res.send({
-      data: showroom,
-      message: "Data has been updated!",
-    });
   } catch (e) {
     res.status(400).send(e);
   }
