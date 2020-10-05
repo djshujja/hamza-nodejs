@@ -29,7 +29,6 @@ router.post("/new", async (req, res) => {
   } catch (e) {}
 });
 
-
 router.get("/delete-showroom/:id", async (req, res) => {
   const id = req.params.id;
   try {
@@ -41,7 +40,7 @@ router.get("/delete-showroom/:id", async (req, res) => {
     }
     showroom.delete();
     res.send({
-      data: showroom
+      data: showroom,
       message: "Showroom deleted successfully!",
     });
   } catch (error) {}
@@ -103,6 +102,5 @@ router.get("/:id", async (req, res) => {
     res.status(400).send(e);
   }
 });
-
 
 module.exports = router;
