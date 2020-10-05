@@ -29,6 +29,24 @@ router.post("/new", async (req, res) => {
   } catch (e) {}
 });
 
+
+router.get("/delete-showroom/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const showroom = await Showroom.findOne({
+      _id: id,
+    });
+    if (showroom == "" || showroom == null) {
+      return res.send("No Showroom found with this id!");
+    }
+    showroom.delete();
+    res.send({
+      data: showroom
+      message: "Showroom deleted successfully!",
+    });
+  } catch (error) {}
+});
+
 router.post("/updateShowroom/:id", async (req, res) => {
   const showroom = await Showroom.findOne({ _id: req.params.id });
   const { name, email, address } = req.body;
@@ -76,7 +94,7 @@ router.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const showroom = await Showroom.findOne({ _id: id }).select("-__v");
-    if (showroom == "" || null) {
+    if (showroom == "" || showroom == null) {
       return res.send(`No Showroom with ${id} exists`);
     }
 
@@ -85,5 +103,6 @@ router.get("/:id", async (req, res) => {
     res.status(400).send(e);
   }
 });
+
 
 module.exports = router;
