@@ -4,7 +4,9 @@ const Showroom = require("../../../models/showroomModel");
 
 router.get("/", async (req, res) => {
   try {
-    const showrooms = await Showroom.find({}).select("-__v");
+    const showrooms = await Showroom.find({})
+      .populate("dealer", "_id name")
+      .select("-__v");
     res.send(showrooms);
   } catch (e) {
     res.status(400).send(e);
@@ -16,17 +18,15 @@ router.post("/new", async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     address: req.body.address,
+    dealer: req.body.dealer,
   });
+  console.log(newShowroom);
   try {
     await newShowroom.save();
-    newShowroom.select("-__v");
-    res.send({
-      data: {
-        newShowroom,
-      },
-      message: "Data has been successfully saved!",
-    });
-  } catch (e) {}
+    res.send("Data has been saved!");
+  } catch (e) {
+    res.send(e);
+  }
 });
 
 router.get("/delete-showroom/:id", async (req, res) => {

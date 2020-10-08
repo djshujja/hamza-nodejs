@@ -18,6 +18,7 @@ const showroomSchema = new mongoose.Schema({
   //   enum: ["Enabled", "Disabled"],
   //   default: "Disabled",
   // },
+
   status: {
     type: String,
     enum: ["Active", "Paused"],
@@ -28,6 +29,11 @@ const showroomSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
     required: true,
+  },
+  dealer: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "dealers",
   },
 });
 
