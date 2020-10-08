@@ -133,10 +133,16 @@ router.post("/edit-dealer/:id", async (req, res, next) => {
         _id: req.params.id,
       },
       {
-        license_expiration_date: license_expiration_date,
+        license_expiration_date: new Date(
+          new Date(license_expiration_date).setHours(00, 00, 00)
+        ),
         license_no: license_no,
-        contract_start_date: contract_start_date,
-        contract_end_date: contract_end_date,
+        contract_start_date: new Date(
+          new Date(contract_start_date).setHours(00, 00, 00)
+        ),
+        contract_end_date: new Date(
+          new Date(contract_end_date).setHours(00, 00, 00)
+        ),
       }
     );
     res.send(dealer);
