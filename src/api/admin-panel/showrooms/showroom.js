@@ -92,7 +92,7 @@ router.post("/edit-status/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const showroom = await Showroom.findOne({ dealer: id })
+    const showroom = await Showroom.find({ dealer: id })
       .populate("dealer")
       .select("-__v");
     if (showroom == "" || showroom == null) {
