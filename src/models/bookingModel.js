@@ -22,7 +22,7 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     required: true,
     // default: Date.now.toISOString(),
-    // default: Date.now
+    default: Date.now
   },
   takenTime: {
     type: String,
