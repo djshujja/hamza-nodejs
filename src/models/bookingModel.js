@@ -19,7 +19,7 @@ const bookingSchema = new mongoose.Schema({
     required: true,
   },
   createdAt: {
-    type: String,
+    type: Date,
     required: true,
     // default: Date.now.toISOString(),
     default: Date.now
